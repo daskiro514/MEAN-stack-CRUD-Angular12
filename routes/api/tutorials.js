@@ -3,6 +3,43 @@ const router = express.Router()
 
 const Tutorial = require('../../models/tutorial')
 
+router.get('/rss', (req, res) => {
+  const data = [
+    {
+      "title": "Reuters ahead with news of U.S. selecting Qatar to be its diplomatic representative in Afghanistan"
+    },
+    {
+      "title": "Reuters reveals Saudi Arabia in talks to refinance, downsize $16 bln loan"
+    },
+    {
+      "title": "Reuters first to report Italy, UniCredit to end Monte dei Paschi sale talks; market reacts"
+    },
+    {
+      "title": "Reuters exclusively reports Germany cuts 2021 GDP growth forecast, lifts 2022 estimate"
+    },
+    {
+      "title": "Reuters exclusively reports Turkey’s state banks likely to follow central bank and slash rates"
+    },
+    {
+      "title": "Reuters exclusively reports BOJ discussing phasing out pandemic support as economy reopens"
+    },
+    {
+      "title": "Reuters reveals U.S. to lift restrictions Nov 8 for vaccinated foreign travelers; market reacts"
+    },
+    {
+      "title": "Reuters ahead with key Turkish Central Bank news; market reacts"
+    },
+    {
+      "title": "Reuters ahead with news of German economic growth downgrade"
+    },
+    {
+      "title": "Reuters reveals U.S. Senator Cotton delays vote on Biden’s pick for powerful China job at Commerce"
+    }
+  ]
+
+  res.json(data)
+})
+
 // Create a new Tutorial
 router.post("/", (req, res) => {
   // Validate request

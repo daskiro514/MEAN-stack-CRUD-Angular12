@@ -1,0 +1,12 @@
+<div>
+  <h4>Rss Feed</h4>
+
+  <ul class="list-group">
+    <li
+      class="list-group-item"
+      *ngFor="let rss of rsses; let i = index"
+    >
+      {{ rss.title }}
+    </li>
+  </ul>
+</div>
