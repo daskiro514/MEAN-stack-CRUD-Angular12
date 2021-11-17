@@ -1,3 +1,3 @@
 export class Rss {
-  title?: string;
+  title?: String;
 }

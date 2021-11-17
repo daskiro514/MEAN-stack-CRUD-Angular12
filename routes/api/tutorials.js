@@ -3,6 +3,17 @@ const router = express.Router()
 
 const Tutorial = require('../../models/tutorial')
 
+router.get('/rssfeed', (req, res) => {
+  const data = {
+    "source": "http://localhost:5000/api/tutorials/rss",
+    "refreshTime": 1,
+    "bgColor": "#600b0b",
+    "color": "#efebeb"
+  }
+
+  res.json(data)
+})
+
 router.get('/rss', (req, res) => {
   const data = [
     {
