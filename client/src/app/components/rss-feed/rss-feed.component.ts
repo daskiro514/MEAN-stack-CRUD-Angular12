@@ -21,6 +21,8 @@ export class RssFeedComponent implements OnInit {
 
   rsses?: Rss[];
 
+  baseUrl = 'https://test.urban-digital.co.il:7012/ExternalData/108'
+
   constructor(private rssService: RssService) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class RssFeedComponent implements OnInit {
         if (config) {
           this.configuration = config
           interval(config.refreshTime * 60 * 1000).pipe(
-            switchMap(() => this.rssService.getRssFeed(config.source))
+            switchMap(() => this.rssService.getRssFeed(`${this.baseUrl}?source=${config.source}&bgColor=${config.bgColor}&color=${config.color}`))
           ).subscribe(
             data => {
               this.rsses = data;
