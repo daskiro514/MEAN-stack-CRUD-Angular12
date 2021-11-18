@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Rss } from '../models/rss.model';
+import { RssItem } from '../models/rss.model';
+import { RssConfiguration } from '../models/rssconfiguration.model';
 
-const baseUrl = 'https://test.urban-digital.co.il:7012/DeviceParameterValues/Parameters?deviceId=1574&token=rss'
-// const baseUrl = 'http://localhost:5000/api/tutorials/rssfeed'
+const configURl = 'https://test.urban-digital.co.il:7012/DeviceParameterValues/Parameters?deviceId=1574&token=rss'
+const rssProxiUrl = 'https://test.urban-digital.co.il:7012/ExternalData/108'
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,12 @@ export class RssService {
 
   constructor(private http: HttpClient) { }
 
-  getConfiguration(): Observable<any> {
-    return this.http.get(baseUrl);
+  getConfiguration(): Observable<RssConfiguration> {
+    return this.http.get<RssConfiguration>(configURl);
   }
 
-  getRssFeed(link: string): Observable<Rss[]> {
-    return this.http.get<Rss[]>(link);
+  getRssFeed(source: string): Observable<RssItem[]> {
+    return this.http.get<RssItem[]>(`${rssProxiUrl}?source=${source}`);
   }
 
 }
