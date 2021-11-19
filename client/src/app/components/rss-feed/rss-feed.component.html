@@ -1,13 +1,9 @@
-<div>
+<div *ngIf="viewModel$ | async as viewModel">
   <h4>Rss Feed</h4>
 
-  <h6>{{ configuration.source }}</h6>
-  <h6>{{ configuration.refreshTime }}</h6>
-  <h6>{{ configuration.bgColor }}</h6>
-  <h6>{{ configuration.color }}</h6>
-
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let rss of rsses; let i = index">
+  <ul class="list-group" *ngIf="viewModel.feed | async as feed"
+    [ngStyle]="{'background-color': viewModel.bgColor, 'color': viewModel.color}">
+    <li class="list-group-item" *ngFor="let rss of feed">
       {{ rss.title }}
     </li>
   </ul>
